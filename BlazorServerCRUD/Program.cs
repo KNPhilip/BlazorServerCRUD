@@ -1,6 +1,7 @@
 global using Microsoft.EntityFrameworkCore;
 global using BlazorServerCRUD.Models;
 global using BlazorServerCRUD.Data;
+global using BlazorServerCRUD.Services.GameService;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContext<GameContext>(options => options.UseInMemoryDatabase("videogamedb"));
+builder.Services.AddScoped<IGameService, GameService>();
 
 var app = builder.Build();
 
