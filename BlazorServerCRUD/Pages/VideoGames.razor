@@ -1,0 +1,31 @@
+﻿@page "/video-games"
+@inject IGameService GameService
+
+<h3>VideoGames</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Game</th>
+            <th>Publisher</th>
+            <th>Release Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var game in GameService.Games)
+        {
+            <tr>
+                <td>@game.Name</td>
+                <td>@game.Publisher</td>
+                <td>@game.ReleaseDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await GameService.LoadGames();
+    }
+}
