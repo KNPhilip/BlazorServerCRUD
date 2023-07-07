@@ -2,7 +2,8 @@ global using Microsoft.EntityFrameworkCore;
 global using BlazorServerCRUD.Models;
 global using BlazorServerCRUD.Data;
 global using BlazorServerCRUD.Services.GameService;
-using Microsoft.AspNetCore.Components;
+global using Microsoft.AspNetCore.Components;
+global using Mapster;
 using Microsoft.AspNetCore.Components.Web;
 
 var builder = WebApplication.CreateBuilder(args);
