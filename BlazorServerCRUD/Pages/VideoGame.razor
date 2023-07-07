@@ -8,7 +8,7 @@
 }
 else
 {
-    <h3>Edit @game.Name</h3>
+    <h3>Edit "@game.Name"</h3>
 }
 
 <EditForm Model="game" OnSubmit="HandleSubmit">
@@ -28,7 +28,7 @@ else
     <button type="submit" class="btn btn-primary">@btnText</button>
     @if (Id is not null)
     {
-        <button type="button" class="btn btn-danger" @onclick="DeleteGame">Delete Game</button>
+        <button type="button" class="btn btn-danger" @onclick="@(() => GameService.DeleteGame(game.Id))">Delete Game</button>
     }
 </EditForm>
 
@@ -37,9 +37,7 @@ else
     public int? Id { get; set; }
 
     string btnText = string.Empty;
-
     Game game = new();
-
     protected override async Task OnInitializedAsync()
     {
         btnText = Id is null ? "Create Game" : "Update Game";
@@ -63,10 +61,5 @@ else
         {
             await GameService.UpdateGame(game, (int)Id);
         }
-    }
-
-    async Task DeleteGame()
-    {
-        await GameService.DeleteGame(game.Id);
     }
 }

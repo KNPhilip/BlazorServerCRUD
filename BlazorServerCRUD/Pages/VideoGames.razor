@@ -2,7 +2,7 @@
 @inject IGameService GameService
 @inject NavigationManager NavigationManager
 
-<h3>VideoGames</h3>
+<h3>Video Games</h3>
 
 <table class="table">
     <thead>
@@ -22,8 +22,7 @@
                 <td>@game.ReleaseDate.ToShortDateString()</td>
                 <td>
                     <button class="btn btn-primary"
-                        @onclick="(() => ShowGame(game.Id))"
-                    >
+                        @onclick="@(() => NavigationManager.NavigateTo($"video-game/{game.Id}"))">
                         <i class="oi oi-pencil" />
                     </button>
                 </td>
@@ -31,21 +30,11 @@
         }
     </tbody>
 </table>
-<button class="btn btn-primary" @onclick="CreateNewGame">Create New Game</button>
+<button class="btn btn-primary" @onclick="@(() => NavigationManager.NavigateTo($"video-game"))">Create New Game</button>
 
 @code {
     protected override async Task OnInitializedAsync()
     {
         await GameService.LoadGames();
-    }
-
-    void ShowGame(int id)
-    {
-        NavigationManager.NavigateTo($"video-game/{id}");
-    }
-
-    void CreateNewGame()
-    {
-        NavigationManager.NavigateTo("video-game");
     }
 }
