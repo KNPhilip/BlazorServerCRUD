@@ -1,5 +1,6 @@
 global using Microsoft.EntityFrameworkCore;
-using BlazorServerCRUD.Data;
+global using BlazorServerCRUD.Models;
+global using BlazorServerCRUD.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddDbContext<GameContext>(options => options.UseInMemoryDatabase("videogamedb"));
 
 var app = builder.Build();
 
