@@ -1,3 +1,4 @@
+global using Microsoft.EntityFrameworkCore;
 using BlazorServerCRUD.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
