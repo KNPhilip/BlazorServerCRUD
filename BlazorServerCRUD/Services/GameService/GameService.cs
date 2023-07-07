@@ -25,6 +25,7 @@
         {
             var game = await _context.Games.FindAsync(id) ?? throw new Exception("Game not found..");
             _context.Games.Remove(game);
+            await _context.SaveChangesAsync();
             _navigationManager.NavigateTo("video-games");
         }
 
@@ -43,9 +44,6 @@
             var dbGame = await _context.Games.FindAsync(id) ?? throw new Exception("Game not found..");
 
             dbGame = game.Adapt<Game>();
-            /*dbGame.Name = game.Name;
-            dbGame.Publisher = game.Publisher;
-            dbGame.ReleaseDate = game.ReleaseDate;*/
 
             await _context.SaveChangesAsync();
             _navigationManager.NavigateTo("video-games");

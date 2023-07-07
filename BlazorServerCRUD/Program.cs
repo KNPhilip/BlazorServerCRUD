@@ -4,7 +4,6 @@ global using BlazorServerCRUD.Data;
 global using BlazorServerCRUD.Services.GameService;
 global using Microsoft.AspNetCore.Components;
 global using Mapster;
-using Microsoft.AspNetCore.Components.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
